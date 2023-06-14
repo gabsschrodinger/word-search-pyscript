@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.game-board {
+    width: 90vh;
+    height: 93vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.letter-grid-row {
+    display: flex;
+}
+
+.game-letter-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px white solid;
+    width: 6vh;
+    height: 6vh;
+}
