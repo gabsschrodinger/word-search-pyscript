@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Word Search</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-</head>
-<body>
+    <py-config>
+        [[fetch]]
+        from = './'
+        files = ['letter_grid.py', 'write_words.py']
+    </py-config>
+  </head>
+  <body>
     <py-script src="script.py"></py-script>
+    <py-script src="write_words.py"></py-script>
+    <py-script src="letter_grid.py"></py-script>
     <div class="game-board"></div>
-</body>
+  </body>
 </html>

@@ -1,22 +1,14 @@
 from js import document
-import random
+from write_words import write_word_horizontally
 from letter_grid import generate_random_letter_grid
 
 board_length = 15
 board_height = 15
 
-letter_grid = generate_random_letter_grid()
+letter_grid = generate_random_letter_grid(board_length, board_height)
+letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO", 0, 0)
 
-
-def write_word_horizontally(word: str) -> None:
-    random_height = random.randint(0, board_height - 1)
-    starting_index = random.randint(0, board_length - 1 - len(word))
-    for letter in word:
-        letter_grid[random_height][starting_index] = letter
-        starting_index += 1
-
-
-game_board = document.getElementsByClassName("game-board")[0]
+game_board = document.querySelector(".game-board")[0]
 
 for i in range(len(letter_grid)):
     current_row = document.createElement("div")
