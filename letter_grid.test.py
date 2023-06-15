@@ -19,13 +19,14 @@ class TestHorizontalWords(unittest.TestCase):
         for item in generated_grid:
             self.assertEqual(type(item), type([]))
 
-    def test_grid_subitems_are_strings(self):
+    def test_grid_subitems_are_objects(self):
         random_height = random.randint(0, 100)
         random_length = random.randint(0, 100)
 
         generated_grid = generate_random_letter_grid(random_length, random_height)
         for item in generated_grid:
             for subitem in item:
-                self.assertEqual(type(subitem), type(""))
+                self.assertEqual(type(subitem["value"]), type(""))
+                self.assertEqual(subitem["locked"], False)
 
 unittest.main()

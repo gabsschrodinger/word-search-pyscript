@@ -6,7 +6,7 @@ board_length = 15
 board_height = 15
 
 letter_grid = generate_random_letter_grid(board_length, board_height)
-letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO", 0, 0)
+letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO")
 
 game_board = document.querySelector(".game-board")
 
@@ -16,7 +16,7 @@ for i in range(len(letter_grid)):
     for j in letter_grid[i]:
         letter_div = document.createElement("div")
         letter_div.setAttribute("class", "game-letter-div")
-        letter_div_content = document.createTextNode(j)
+        letter_div_content = document.createTextNode(j["value"])
         letter_div.appendChild(letter_div_content)
         current_row.appendChild(letter_div)
     game_board.appendChild(current_row)

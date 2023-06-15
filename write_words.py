@@ -2,7 +2,7 @@ import random
 from typing import List
 
 
-def write_word_horizontally(letter_grid: List[str], word: str, grid_x: int = None, grid_y: int = None) -> List[str]:
+def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
     new_grid = letter_grid.copy()
 
     height = random.randint(
@@ -11,7 +11,11 @@ def write_word_horizontally(letter_grid: List[str], word: str, grid_x: int = Non
         0, len(letter_grid[0]) - 1 - len(word)) if grid_x == None else grid_x
 
     for letter in word:
-        new_grid[height][starting_index] = letter
+        entry = {
+            "value": letter,
+            "locked": True
+        }
+        new_grid[height][starting_index] = entry
         starting_index += 1
 
     return new_grid

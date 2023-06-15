@@ -16,7 +16,7 @@ class TestHorizontalWords(unittest.TestCase):
             letter_grid, test_string, grid_x, grid_y)
 
         for letter in test_string:
-            self.assertEqual(letter_grid[grid_y][grid_x], letter.upper())
+            self.assertEqual(letter_grid[grid_y][grid_x]["value"], letter.upper())
             grid_x += 1
 
 
