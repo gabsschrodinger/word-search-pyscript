@@ -11,6 +11,9 @@ def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: in
         0, len(letter_grid[0]) - 1 - len(word)) if grid_x == None else grid_x
 
     for letter in word:
+        if new_grid[height][starting_index]["locked"]:
+            raise Exception("Letter is locked")
+
         entry = {
             "value": letter,
             "locked": True
