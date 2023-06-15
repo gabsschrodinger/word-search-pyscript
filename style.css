@@ -1,16 +1,53 @@
 body {
-  display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
+  padding: 0;
+}
+
+.hamburger {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: min-content;
+  padding: 5px;
+  padding-top: 15px;
+  z-index: 999;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 5px;
+  margin-bottom: 4px;
+  background-color: black;
+  border-radius: 3px;
+}
+
+.sidebar-inactive {
+  display: none;
+}
+
+.sidebar-active {
+  position: fixed;
+  width: 30vw;
   height: 100vh;
-  width: 100vw;
+  padding-top: 60px;
+  background-color: black;
+}
+
+.hamburger-active span {
+  background-color: white;
 }
 
 .game-board {
-  background-color: black;
+  background-color: white;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .letter-grid-row {
@@ -18,11 +55,13 @@ body {
 }
 
 .game-letter-div {
+  background-color: black;
   display: flex;
+  font-size: 1.3rem;
   align-items: center;
   justify-content: center;
   color: white;
   border: 1px white solid;
-  width: 6vh;
-  height: 6vh;
+  width: 5.5vh;
+  height: 5.5vh;
 }

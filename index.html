@@ -8,15 +8,25 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
-        [[fetch]]
-        from = './'
-        files = ['letter_grid.py', 'write_words.py']
+      [[fetch]]
+      from = './'
+      files = ['letter_grid.py', 'write_words.py']
     </py-config>
   </head>
   <body>
     <py-script src="script.py"></py-script>
-    <py-script src="write_words.py"></py-script>
-    <py-script src="letter_grid.py"></py-script>
+
+    <div class="hamburger" py-click="sidebar_toggle()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="sidebar-inactive">
+      <div class="menu">
+        <li><a href="#">Sobre</a></li>
+      </div>
+    </nav>
+
     <div class="game-board"></div>
   </body>
 </html>

@@ -9,6 +9,19 @@ letter_grid = generate_random_letter_grid(board_length, board_height)
 letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO")
 letter_grid = write_word_vertically(letter_grid, "OOOOOOOO")
 
+
+def sidebar_toggle():
+    if document.querySelector(".sidebar-active") != None:
+        sidebar_container = document.querySelector(".sidebar-active")
+        sidebar_container.setAttribute("class", "sidebar-inactive")
+        document.querySelector(
+            ".hamburger").classList.remove('hamburger-active')
+    elif document.querySelector(".sidebar-inactive") != None:
+        sidebar_container = document.querySelector(".sidebar-inactive")
+        sidebar_container.setAttribute("class", "sidebar-active")
+        document.querySelector(".hamburger").classList.add("hamburger-active")
+
+
 def rerender_board():
     game_board = document.querySelector(".game-board")
     game_board.replaceChildren()
@@ -23,5 +36,6 @@ def rerender_board():
             letter_div.appendChild(letter_div_content)
             current_row.appendChild(letter_div)
         game_board.appendChild(current_row)
+
 
 rerender_board()
