@@ -8,7 +8,7 @@ board_height = 15
 letter_grid = generate_random_letter_grid(board_length, board_height)
 letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO", 0, 0)
 
-game_board = document.querySelector(".game-board")[0]
+game_board = document.querySelector(".game-board")
 
 for i in range(len(letter_grid)):
     current_row = document.createElement("div")
