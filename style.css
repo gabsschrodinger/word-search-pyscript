@@ -78,4 +78,5 @@ body {
   border: 1px white solid;
   width: 5.5vh;
   height: 5.5vh;
+  user-select: none;
 }
