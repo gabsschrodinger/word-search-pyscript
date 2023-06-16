@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+body nav {
+  transition: all 2s ease-in-out;
+}
+
 .hamburger {
   position: fixed;
   display: flex;
@@ -20,21 +24,24 @@ body {
   width: 30px;
   height: 5px;
   margin-bottom: 4px;
-  background-color: black;
+  background: black;
   border-radius: 3px;
+  transition: background 0.3s;
 }
 
-.sidebar-inactive {
-  display: none;
-}
-
-.sidebar-active {
+.sidebar {
   position: fixed;
   width: 30vw;
   height: 100vh;
   padding-top: 70px;
   background-color: black;
   z-index: 998;
+  transition: transform 0.3s;
+}
+
+.sidebar-inactive {
+  /* display: none; */
+  transform: translate(-100%, 0);
 }
 
 .menu {
@@ -52,7 +59,7 @@ body {
 }
 
 .hamburger-active span {
-  background-color: white;
+  background: white;
 }
 
 .game-board {
@@ -81,6 +88,7 @@ body {
   width: 5.5vh;
   height: 5.5vh;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .shadow {

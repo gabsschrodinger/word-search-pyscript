@@ -10,15 +10,13 @@ letter_grid = generate_random_letter_grid(board_length, board_height)
 
 
 def sidebar_toggle():
-    if document.querySelector(".sidebar-active") != None:
-        sidebar_container = document.querySelector(".sidebar-active")
-        sidebar_container.setAttribute("class", "sidebar-inactive")
+    if document.querySelector(".sidebar-inactive") == None:
+        document.querySelector(".sidebar").classList.add("sidebar-inactive")
         document.querySelector(
             ".hamburger").classList.remove('hamburger-active')
         document.querySelector(".shadow").classList.remove("shadow-on")
     elif document.querySelector(".sidebar-inactive") != None:
-        sidebar_container = document.querySelector(".sidebar-inactive")
-        sidebar_container.setAttribute("class", "sidebar-active")
+        document.querySelector(".sidebar").classList.remove("sidebar-inactive")
         document.querySelector(".hamburger").classList.add("hamburger-active")
         document.querySelector(".shadow").classList.add("shadow-on")
 
