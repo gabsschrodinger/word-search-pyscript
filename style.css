@@ -32,8 +32,22 @@ body {
   position: fixed;
   width: 30vw;
   height: 100vh;
-  padding-top: 60px;
+  padding-top: 70px;
   background-color: black;
+}
+
+.menu {
+  width: 100%;
+  color: white;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
 }
 
 .hamburger-active span {

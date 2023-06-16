@@ -1,13 +1,12 @@
 from js import document
 from write_words import write_word_horizontally, write_word_vertically
 from letter_grid import generate_random_letter_grid
+import random
 
 board_length = 15
 board_height = 15
 
 letter_grid = generate_random_letter_grid(board_length, board_height)
-letter_grid = write_word_horizontally(letter_grid, "OOOOOOOO")
-letter_grid = write_word_vertically(letter_grid, "OOOOOOOO")
 
 
 def sidebar_toggle():
@@ -36,6 +35,24 @@ def rerender_board():
             letter_div.appendChild(letter_div_content)
             current_row.appendChild(letter_div)
         game_board.appendChild(current_row)
+
+
+def submit_word():
+    add_word_input = document.querySelector(".add-word-input")
+    word_to_add = add_word_input.value
+
+    if word_to_add == None or word_to_add == "":
+        return
+
+    random_option = random.randint(1, 2)
+
+    match random_option:
+        case 1:
+            write_word_horizontally(letter_grid, word_to_add)
+        case 2:
+            write_word_vertically(letter_grid, word_to_add)
+
+    rerender_board()
 
 
 rerender_board()

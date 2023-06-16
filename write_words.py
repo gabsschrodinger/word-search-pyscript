@@ -1,6 +1,8 @@
 import random
 from typing import List
 
+written_words = []
+
 
 def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
     new_grid = letter_grid.copy()
