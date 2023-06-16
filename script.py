@@ -21,6 +21,12 @@ def sidebar_toggle():
         document.querySelector(".shadow").classList.add("shadow-on")
 
 
+def shadow_sidebar_toggle():
+    if document.querySelector(".shadow-on") != None:
+        sidebar_toggle()
+    
+
+
 def rerender_board():
     game_board = document.querySelector(".game-board")
     game_board.replaceChildren()
@@ -48,9 +54,9 @@ def submit_word():
 
     match random_option:
         case 1:
-            write_word_horizontally(letter_grid, word_to_add)
+            write_word_horizontally(letter_grid, word_to_add.upper())
         case 2:
-            write_word_vertically(letter_grid, word_to_add)
+            write_word_vertically(letter_grid, word_to_add.upper())
 
     add_word_input.value = ""
 
