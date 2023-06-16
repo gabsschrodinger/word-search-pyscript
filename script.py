@@ -15,10 +15,12 @@ def sidebar_toggle():
         sidebar_container.setAttribute("class", "sidebar-inactive")
         document.querySelector(
             ".hamburger").classList.remove('hamburger-active')
+        document.querySelector(".shadow").classList.remove("shadow-on")
     elif document.querySelector(".sidebar-inactive") != None:
         sidebar_container = document.querySelector(".sidebar-inactive")
         sidebar_container.setAttribute("class", "sidebar-active")
         document.querySelector(".hamburger").classList.add("hamburger-active")
+        document.querySelector(".shadow").classList.add("shadow-on")
 
 
 def rerender_board():
