@@ -52,6 +52,8 @@ def submit_word():
         case 2:
             write_word_vertically(letter_grid, word_to_add)
 
+    add_word_input.value = ""
+
     rerender_board()
 
 
