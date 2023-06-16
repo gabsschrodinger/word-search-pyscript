@@ -1,10 +1,7 @@
 import random
 from typing import List
+from tracked_words import written_words
 
-written_words = []
-
-def clean_up_words():
-    written_words.clear()
 
 def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
     new_grid = letter_grid.copy()

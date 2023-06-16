@@ -1,6 +1,7 @@
 import unittest
 from letter_grid import generate_random_letter_grid
-from write_words import write_word_horizontally, write_word_vertically, written_words, clean_up_words
+from write_words import write_word_horizontally, write_word_vertically
+from tracked_words import written_words, clean_up_words
 import random
 
 
