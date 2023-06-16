@@ -34,12 +34,12 @@ body {
   height: 100vh;
   padding-top: 70px;
   background-color: black;
+  z-index: 998;
 }
 
 .menu {
   width: 100%;
   color: white;
-  z-index: 998;
 }
 
 .menu li {
