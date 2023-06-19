@@ -1,26 +1,25 @@
 import random
 from typing import List
 from tracked_words import written_words, display_tracked_words
+from letter_grid import letter_grid
 
 
-def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
-    new_grid = letter_grid.copy()
-
+def write_word_horizontally(word: str, grid_x: int = None, grid_y: int = None) -> None:
     height = random.randint(
         0, len(letter_grid) - 1) if grid_y == None else grid_y
     starting_width = random.randint(
-        0, len(letter_grid[0]) - 1 - len(word)) if grid_x == None else grid_x
+        0, len(letter_grid[0]) - len(word)) if grid_x == None else grid_x
 
     coordinates = []
     for letter in word:
-        if new_grid[height][starting_width]["locked"] and new_grid[height][starting_width]["value"] != letter:
+        if letter_grid[height][starting_width]["locked"] and letter_grid[height][starting_width]["value"] != letter:
             raise Exception("Letter is locked")
 
         entry = {
             "value": letter,
             "locked": True
         }
-        new_grid[height][starting_width] = entry
+        letter_grid[height][starting_width] = entry
         coordinates.append((starting_width, height))
         starting_width += 1
 
@@ -33,27 +32,23 @@ def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: in
 
     display_tracked_words()
 
-    return new_grid
 
-
-def write_word_vertically(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
-    new_grid = letter_grid.copy()
-
+def write_word_vertically(word: str, grid_x: int = None, grid_y: int = None) -> None:
     starting_height = random.randint(
-        0, len(letter_grid) - 1 - len(word)) if grid_y == None else grid_y
+        0, len(letter_grid) - len(word)) if grid_y == None else grid_y
     width = random.randint(
         0, len(letter_grid[0]) - 1) if grid_x == None else grid_x
 
     coordinates = []
     for letter in word:
-        if new_grid[starting_height][width]["locked"] and new_grid[starting_height][width]["value"] != letter:
+        if letter_grid[starting_height][width]["locked"] and letter_grid[starting_height][width]["value"] != letter:
             raise Exception("Letter is locked")
 
         entry = {
             "value": letter,
             "locked": True
         }
-        new_grid[starting_height][width] = entry
+        letter_grid[starting_height][width] = entry
         coordinates.append((width, starting_height))
         starting_height += 1
 
@@ -66,4 +61,12 @@ def write_word_vertically(letter_grid: List[List[dict]], word: str, grid_x: int 
 
     display_tracked_words()
 
-    return new_grid
+
+def randomly_write_word(word: str) -> List[List[dict]]:
+    random_option = random.randint(1, 2)
+
+    match random_option:
+        case 1:
+            write_word_horizontally(word.upper())
+        case 2:
+            write_word_vertically(word.upper())

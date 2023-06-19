@@ -1,6 +1,5 @@
 from js import document
 from write_words import write_word_horizontally, write_word_vertically
-from letter_grid import letter_grid
 import random
 from board import rerender_board
 
@@ -42,9 +41,9 @@ def submit_word():
 
     match random_option:
         case 1:
-            write_word_horizontally(letter_grid, word_to_add.upper())
+            write_word_horizontally(word_to_add.upper())
         case 2:
-            write_word_vertically(letter_grid, word_to_add.upper())
+            write_word_vertically(word_to_add.upper())
 
     add_word_input.value = ""
 
