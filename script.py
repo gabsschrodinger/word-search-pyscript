@@ -1,6 +1,5 @@
 from js import document
-from write_words import write_word_horizontally, write_word_vertically
-import random
+from write_words import write_with_retry
 from board import rerender_board
 
 
@@ -37,13 +36,7 @@ def submit_word():
     if word_to_add == None or word_to_add == "":
         return
 
-    random_option = random.randint(1, 2)
-
-    match random_option:
-        case 1:
-            write_word_horizontally(word_to_add.upper())
-        case 2:
-            write_word_vertically(word_to_add.upper())
+    write_with_retry(word_to_add.upper())
 
     add_word_input.value = ""
 

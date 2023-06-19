@@ -62,7 +62,7 @@ def write_word_vertically(word: str, grid_x: int = None, grid_y: int = None) -> 
     display_tracked_words()
 
 
-def randomly_write_word(word: str) -> List[List[dict]]:
+def randomly_write_word(word: str) -> None:
     random_option = random.randint(1, 2)
 
     match random_option:
@@ -70,3 +70,16 @@ def randomly_write_word(word: str) -> List[List[dict]]:
             write_word_horizontally(word.upper())
         case 2:
             write_word_vertically(word.upper())
+
+def write_with_retry(word:str) -> None:
+    attempts = 0
+
+    while attempts < 1000:
+        try:
+            randomly_write_word(word)
+
+            return
+        except:
+            attempts += 1
+
+    raise Exception("Too many attempts. Cannot add word :(")
