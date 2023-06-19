@@ -10,7 +10,7 @@
     <py-config>
       [[fetch]]
       from = './'
-      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py']
+      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py', 'board.py']
     </py-config>
   </head>
   <body>
@@ -39,9 +39,13 @@
       </div>
     </nav>
 
-    <div class="shadow shadow-off" py-click="shadow_sidebar_toggle()"></div>
+    <div class="shadow" py-click="shadow_sidebar_toggle()"></div>
 
-    <div class="written-words"></div>
-    <div class="game-board"></div>
+    <main>
+      <div class="game-container">  
+        <div class="written-words"></div>
+        <div class="game-board"></div>
+      </div>
+    </main>
   </body>
 </html>

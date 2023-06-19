@@ -17,3 +17,6 @@ def generate_random_letter_grid(grid_length: int, grid_height: int) -> List[List
         letter_grid.append(current_row)
 
     return letter_grid
+
+
+letter_grid = generate_random_letter_grid(15, 15)

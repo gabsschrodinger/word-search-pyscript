@@ -1,6 +1,6 @@
 import random
 from typing import List
-from tracked_words import written_words
+from tracked_words import written_words, display_tracked_words
 
 
 def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: int = None, grid_y: int = None) -> List[List[dict]]:
@@ -30,6 +30,8 @@ def write_word_horizontally(letter_grid: List[List[dict]], word: str, grid_x: in
     }
 
     written_words.append(tracked_word)
+
+    display_tracked_words()
 
     return new_grid
 
@@ -61,5 +63,7 @@ def write_word_vertically(letter_grid: List[List[dict]], word: str, grid_x: int 
     }
 
     written_words.append(tracked_word)
+
+    display_tracked_words()
 
     return new_grid
