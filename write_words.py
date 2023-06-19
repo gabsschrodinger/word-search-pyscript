@@ -12,12 +12,12 @@ def write_word_horizontally(word: str, grid_x: int = None, grid_y: int = None) -
 
     coordinates = []
     for letter in word:
-        if letter_grid[height][starting_width]["locked"] and letter_grid[height][starting_width]["value"] != letter:
+        if letter_grid[height][starting_width]["locked"] > 0 and letter_grid[height][starting_width]["value"] != letter:
             raise Exception("Letter is locked")
 
         entry = {
             "value": letter,
-            "locked": True
+            "locked": letter_grid[height][starting_width]["locked"] + 1
         }
         letter_grid[height][starting_width] = entry
         coordinates.append((starting_width, height))
@@ -41,12 +41,12 @@ def write_word_vertically(word: str, grid_x: int = None, grid_y: int = None) -> 
 
     coordinates = []
     for letter in word:
-        if letter_grid[starting_height][width]["locked"] and letter_grid[starting_height][width]["value"] != letter:
+        if letter_grid[starting_height][width]["locked"] > 0 and letter_grid[starting_height][width]["value"] != letter:
             raise Exception("Letter is locked")
 
         entry = {
             "value": letter,
-            "locked": True
+            "locked": letter_grid[starting_height][width]["locked"] + 1
         }
         letter_grid[starting_height][width] = entry
         coordinates.append((width, starting_height))

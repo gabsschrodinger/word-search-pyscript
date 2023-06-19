@@ -19,7 +19,7 @@ def remove_word(word: str) -> None:
     for coordinate in coordinates:
         entry = {
             "value": random.choice(string.ascii_letters).upper(),
-            "locked": False
+            "locked": letter_grid[coordinate[1]][coordinate[0]]["locked"] - 1
         }
         letter_grid[coordinate[1]][coordinate[0]] = entry
 
