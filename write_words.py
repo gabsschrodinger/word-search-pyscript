@@ -1,6 +1,5 @@
 import random
-from typing import List
-from tracked_words import written_words, display_tracked_words
+from tracked_words import written_words, display_tracked_words, randomize_coordinates
 from letter_grid import letter_grid
 
 
@@ -13,6 +12,7 @@ def write_word_horizontally(word: str, grid_x: int = None, grid_y: int = None) -
     coordinates = []
     for letter in word:
         if letter_grid[height][starting_width]["locked"] > 0 and letter_grid[height][starting_width]["value"] != letter:
+            randomize_coordinates(coordinates)
             raise Exception("Letter is locked")
 
         entry = {
@@ -42,6 +42,7 @@ def write_word_vertically(word: str, grid_x: int = None, grid_y: int = None) -> 
     coordinates = []
     for letter in word:
         if letter_grid[starting_height][width]["locked"] > 0 and letter_grid[starting_height][width]["value"] != letter:
+            randomize_coordinates(coordinates)
             raise Exception("Letter is locked")
 
         entry = {

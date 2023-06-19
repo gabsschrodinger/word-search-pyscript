@@ -8,26 +8,34 @@ from pyodide.ffi.wrappers import add_event_listener
 
 written_words: List[dict] = []
 
+
 def clean_up_words() -> None:
     written_words.clear()
 
-def remove_word(word: str) -> None:
-    word_to_remove = list(filter(lambda x: x["word"] == word, written_words))[0]
-    coordinates = word_to_remove["coordinates"]
 
-
+def randomize_coordinates(coordinates: List[tuple]) -> None:
     for coordinate in coordinates:
         entry = {
-            "value": random.choice(string.ascii_letters).upper(),
+            "value": random.choice(string.ascii_letters).upper() if letter_grid[coordinate[1]][coordinate[0]]["locked"] <= 1 else letter_grid[coordinate[1]][coordinate[0]]["word"],
             "locked": letter_grid[coordinate[1]][coordinate[0]]["locked"] - 1
         }
         letter_grid[coordinate[1]][coordinate[0]] = entry
 
-    written_words.remove(word_to_remove)
-    display_tracked_words()
     rerender_board()
 
-def display_tracked_words():
+
+def remove_word(word: str) -> None:
+    word_to_remove = list(
+        filter(lambda x: x["word"] == word, written_words))[0]
+    coordinates = word_to_remove["coordinates"]
+
+    randomize_coordinates(coordinates)
+
+    written_words.pop(written_words.index(word_to_remove))
+    display_tracked_words()
+
+
+def display_tracked_words() -> None:
     written_words_div = document.querySelector(".written-words")
     written_words_div.replaceChildren()
 
@@ -42,10 +50,8 @@ def display_tracked_words():
         remove_word_content = document.createTextNode("X")
         new_word_remove_btn.appendChild(remove_word_content)
 
-        def remove_word_wrap(*args):
-            remove_word(word["word"])
-
-        add_event_listener(new_word_remove_btn, "click", remove_word_wrap)
+        add_event_listener(new_word_remove_btn, "click",
+                           lambda _: remove_word(word["word"]))
 
         new_word.appendChild(new_word_remove_btn)
 
