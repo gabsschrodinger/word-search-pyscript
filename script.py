@@ -89,3 +89,6 @@ def submit_word():
 
 
 rerender_board()
+
+add_word_input = document.querySelector(".add-word-input")
+add_event_listener(add_word_input, "keydown", lambda e: submit_word() if e.code == "Enter" else None)
