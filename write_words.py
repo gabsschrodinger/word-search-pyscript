@@ -16,7 +16,8 @@ def write_word_horizontally(word: str, render_words_callback: Callable[[], None]
 
         entry = {
             "value": letter,
-            "locked": letter_grid[height][starting_width]["locked"] + 1
+            "locked": letter_grid[height][starting_width]["locked"] + 1,
+            "coordinate": (starting_width, height)
         }
         letter_grid[height][starting_width] = entry
         coordinates.append((starting_width, height))
@@ -44,7 +45,8 @@ def write_word_vertically(word: str, render_words_callback: Callable[[], None], 
 
         entry = {
             "value": letter,
-            "locked": letter_grid[starting_height][width]["locked"] + 1
+            "locked": letter_grid[starting_height][width]["locked"] + 1,
+            "coordinate": (width, starting_height)
         }
         letter_grid[starting_height][width] = entry
         coordinates.append((width, starting_height))

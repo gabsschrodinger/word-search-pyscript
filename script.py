@@ -15,10 +15,14 @@ def rerender_board():
         for j in letter_grid[i]:
             letter_div = document.createElement("div")
             letter_div.setAttribute("class", "game-letter-div")
+            letter_div.classList.add("coordinate-" +
+                str(j["coordinate"][0]) + "-" + str(j["coordinate"][1]))
             letter_div_content = document.createTextNode(j["value"])
             letter_div.appendChild(letter_div_content)
             current_row.appendChild(letter_div)
         game_board.appendChild(current_row)
+
+    highlight_words_toggle()
 
 
 def display_tracked_words() -> None:
@@ -87,6 +91,18 @@ def submit_word():
     add_word_input.value = ""
 
     rerender_board()
+
+
+def highlight_words_toggle():
+    for letter_row in letter_grid:
+        for letter_cell in letter_row:
+            class_name = ".coordinate-" + str(letter_cell["coordinate"][0]) + "-" + str(letter_cell["coordinate"][1])
+            letter_cell_element = document.querySelector(class_name)
+
+            if document.querySelector(".highlight-input").checked and letter_cell["locked"] > 0:
+                letter_cell_element.classList.add("letter-cell-highlighted")
+            else:
+                letter_cell_element.classList.remove("letter-cell-highlighted")
 
 
 rerender_board()
