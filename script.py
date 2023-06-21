@@ -34,11 +34,12 @@ def display_tracked_words() -> None:
         new_word_remove_btn = document.createElement("div")
         new_word_remove_btn.setAttribute(
             "class", "written-word-remove-btn")
+        new_word_remove_btn.id = "remove-" + word["word"]
         remove_word_content = document.createTextNode("X")
         new_word_remove_btn.appendChild(remove_word_content)
 
-        add_event_listener(new_word_remove_btn, "click",
-                           lambda _: remove_word(word["word"], display_tracked_words, rerender_board))
+        add_event_listener(new_word_remove_btn, "click", lambda e: remove_word(
+            e.target.id[7:], display_tracked_words, rerender_board))
 
         new_word.appendChild(new_word_remove_btn)
 
@@ -91,5 +92,7 @@ def submit_word():
 rerender_board()
 
 add_word_input = document.querySelector(".add-word-input")
-add_event_listener(add_word_input, "keydown", lambda e: submit_word() if e.code == "Enter" else None)
-add_event_listener(document.querySelector("body"), "keydown", lambda e: sidebar_toggle() if e.code == "Escape" and document.querySelector(".shadow-on") != None else None)
+add_event_listener(add_word_input, "keydown",
+                   lambda e: submit_word() if e.code == "Enter" else None)
+add_event_listener(document.querySelector("body"), "keydown", lambda e: sidebar_toggle(
+) if e.code == "Escape" and document.querySelector(".shadow-on") != None else None)

@@ -32,5 +32,5 @@ def remove_word(word: str, render_words_callback: Callable[[], None], render_boa
 
     randomize_coordinates(coordinates, render_board_callback)
 
-    written_words.pop(written_words.index(word_to_remove))
+    written_words.remove(word_to_remove)
     render_words_callback()
