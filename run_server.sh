@@ -1,3 +1,3 @@
 rm -rf __pycache__
 
-python -m http.server 3000
+python -m http.server 5500
