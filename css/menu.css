@@ -1,3 +1,7 @@
+body nav {
+  transition: all 2s ease-in-out;
+}
+
 .hamburger {
   position: fixed;
   display: flex;
@@ -45,6 +49,30 @@
   transition: transform 0.3s;
 }
 
+@media only screen and (max-width: 1270px) {
+  .sidebar {
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .sidebar {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .sidebar {
+    width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .sidebar {
+    width: 70vw;
+  }
+}
+
 .sidebar-inactive {
   transform: translate(-100%, 0);
 }
@@ -56,9 +84,43 @@
 
 .menu li {
   list-style: none;
+  margin-top: 10px;
+  margin-left: 15px;
 }
 
 .menu li a {
   text-decoration: none;
   color: white;
+}
+
+.add-word-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 5px;
+}
+
+.add-word-container button {
+  border-radius: 5px;
+  background-color: white;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.add-word-input {
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+.add-word-input:focus {
+  outline: none;
+}
+
+.highlight-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 5px;
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Word Search</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/menu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config>
+      [[fetch]]
+      from = './'
+      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py']
+    </py-config>
+  </head>
+  <body>
+    <py-script src="python-ui/menu_toggle.py"></py-script>
+
+    <div class="hamburger" py-click="sidebar_toggle()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="sidebar sidebar-inactive">
+      <div class="menu">
+        <li><a href="#">Create Word Search puzzle</a></li>
+        <li><a href="#">About</a></li>
+      </div>
+    </nav>
+
+    <div class="shadow" py-click="shadow_sidebar_toggle()"></div>
+
+    <main>
+      <h1>Word Search</h1>
+    </main>
+  </body>
+</html>

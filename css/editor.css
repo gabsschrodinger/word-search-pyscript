@@ -1,0 +1,69 @@
+.written-words {
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.written-word {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 8px;
+  border-radius: 8px;
+}
+
+.written-word-remove-btn {
+  margin-left: 7px;
+  font-size: 0.7rem;
+  height: 15px;
+  width: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.game-container {
+  width: min-content;
+}
+
+.game-board {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-grid-row {
+  display: flex;
+}
+
+.game-letter-div {
+  background-color: black;
+  display: flex;
+  font-size: 1.3rem;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 1px white solid;
+  width: 5.5vh;
+  height: 5.5vh;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.letter-cell-highlighted {
+  background-color: gray;
+}
