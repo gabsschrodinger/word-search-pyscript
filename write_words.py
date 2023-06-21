@@ -4,24 +4,26 @@ from letter_grid import letter_grid
 from typing import Callable
 
 
-def write_word_horizontally(word: str, render_words_callback: Callable[[], None], render_board_callback: Callable[[], None]) -> None:
-    height = random.randint(0, len(letter_grid) - 1)
-    starting_width = random.randint(0, len(letter_grid[0]) - len(word))
+def write_word_generic(word: str, width: int, height: int, update_coordinates_callback: Callable[[(int, int)], tuple], render_board_callback: Callable[[], None]) -> None:
+    x_coordinate = width
+    y_coordinate = height
 
     coordinates = []
     for letter in word:
-        if letter_grid[height][starting_width]["locked"] > 0 and letter_grid[height][starting_width]["value"] != letter:
+        if letter_grid[y_coordinate][x_coordinate]["locked"] > 0 and letter_grid[y_coordinate][x_coordinate]["value"] != letter:
             randomize_coordinates(coordinates, render_board_callback)
             raise Exception("Letter is locked")
 
         entry = {
             "value": letter,
-            "locked": letter_grid[height][starting_width]["locked"] + 1,
-            "coordinate": (starting_width, height)
+            "locked": letter_grid[y_coordinate][x_coordinate]["locked"] + 1,
+            "coordinate": (x_coordinate, y_coordinate)
         }
-        letter_grid[height][starting_width] = entry
-        coordinates.append((starting_width, height))
-        starting_width += 1
+        letter_grid[y_coordinate][x_coordinate] = entry
+        coordinates.append((x_coordinate, y_coordinate))
+
+        (x_coordinate, y_coordinate) = update_coordinates_callback(
+            (x_coordinate, y_coordinate))
 
     tracked_word = {
         "word": word,
@@ -29,41 +31,40 @@ def write_word_horizontally(word: str, render_words_callback: Callable[[], None]
     }
 
     written_words.append(tracked_word)
+
+
+def write_word_horizontally(word: str, render_words_callback: Callable[[], None], render_board_callback: Callable[[], None]) -> None:
+    height = random.randint(0, len(letter_grid) - 1)
+    width = random.randint(0, len(letter_grid[0]) - len(word))
+
+    write_word_generic(word, width, height, lambda x: (
+        x[0] + 1, x[1]), render_board_callback)
 
     render_words_callback()
 
 
 def write_word_vertically(word: str, render_words_callback: Callable[[], None], render_board_callback: Callable[[], None]) -> None:
-    starting_height = random.randint(0, len(letter_grid) - len(word))
+    height = random.randint(0, len(letter_grid) - len(word))
     width = random.randint(0, len(letter_grid[0]) - 1)
 
-    coordinates = []
-    for letter in word:
-        if letter_grid[starting_height][width]["locked"] > 0 and letter_grid[starting_height][width]["value"] != letter:
-            randomize_coordinates(coordinates, render_board_callback)
-            raise Exception("Letter is locked")
+    write_word_generic(word, width, height, lambda x: (
+        x[0], x[1] + 1), render_board_callback)
 
-        entry = {
-            "value": letter,
-            "locked": letter_grid[starting_height][width]["locked"] + 1,
-            "coordinate": (width, starting_height)
-        }
-        letter_grid[starting_height][width] = entry
-        coordinates.append((width, starting_height))
-        starting_height += 1
+    render_words_callback()
 
-    tracked_word = {
-        "word": word,
-        "coordinates": coordinates
-    }
 
-    written_words.append(tracked_word)
+def write_word_forward_diagonal(word: str, render_words_callback: Callable[[], None], render_board_callback: Callable[[], None]) -> None:
+    height = random.randint(0, len(letter_grid) - len(word))
+    width = random.randint(0, len(letter_grid[0]) - len(word))
+
+    write_word_generic(word, width, height, lambda x: (
+        x[0] + 1, x[1] + 1), render_board_callback)
 
     render_words_callback()
 
 
 def randomly_write_word(word: str, render_words_callback: Callable[[], None], render_board_callback: Callable[[], None]) -> None:
-    random_option = random.randint(1, 2)
+    random_option = random.randint(1, 3)
 
     match random_option:
         case 1:
@@ -71,6 +72,9 @@ def randomly_write_word(word: str, render_words_callback: Callable[[], None], re
                 word.upper(), render_words_callback, render_board_callback)
         case 2:
             write_word_vertically(
+                word.upper(), render_words_callback, render_board_callback)
+        case 3:
+            write_word_forward_diagonal(
                 word.upper(), render_words_callback, render_board_callback)
 
 
