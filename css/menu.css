@@ -73,6 +73,12 @@ body nav {
   }
 }
 
+@media only screen and (max-width: 580px) {
+  .sidebar {
+    width: 80vw;
+  }
+}
+
 .sidebar-inactive {
   transform: translate(-100%, 0);
 }
