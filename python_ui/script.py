@@ -1,8 +1,8 @@
 from js import document
 from pyodide.ffi.wrappers import add_event_listener
-from tracked_words import written_words, remove_word
-from letter_grid import letter_grid
-from write_words import write_with_retry
+from python_core.tracked_words import written_words, remove_word
+from python_core.letter_grid import letter_grid
+from python_core.write_words import write_with_retry
 
 
 def rerender_board():

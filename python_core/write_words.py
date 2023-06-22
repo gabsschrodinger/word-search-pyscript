@@ -1,6 +1,6 @@
 import random
-from tracked_words import written_words, randomize_coordinates
-from letter_grid import letter_grid
+from python_core.tracked_words import written_words, randomize_coordinates
+from python_core.letter_grid import letter_grid
 from typing import Callable
 
 

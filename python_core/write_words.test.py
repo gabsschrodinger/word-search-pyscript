@@ -1,7 +1,7 @@
 import unittest
-from letter_grid import generate_random_letter_grid
-from write_words import write_word_horizontally, write_word_vertically
-from tracked_words import written_words, clean_up_words
+from python_core.letter_grid import generate_random_letter_grid
+from python_core.write_words import write_word_horizontally, write_word_vertically
+from python_core.tracked_words import written_words, clean_up_words
 import random
 
 

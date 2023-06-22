@@ -1,5 +1,5 @@
 import unittest
-from tracked_words import written_words, clean_up_words
+from python_core.tracked_words import written_words, clean_up_words
 
 class TestHorizontalWords(unittest.TestCase):
     def test_clean_up(self):

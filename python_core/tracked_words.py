@@ -1,5 +1,5 @@
 from typing import List, Callable, TypedDict
-from letter_grid import letter_grid
+from python_core.letter_grid import letter_grid
 import random
 import string
 
