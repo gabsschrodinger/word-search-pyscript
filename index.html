@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Word Search</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/editor.css" />
-    <link rel="stylesheet" href="css/menu.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/menu.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <py-config>
-      [[fetch]]
-      from = './python_core'
-      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py']
-      to_folder = 'python_core'
-    </py-config>
   </head>
   <body>
     <py-script src="python_ui/menu_toggle.py"></py-script>
-    <py-script src="python_ui/script.py"></py-script>
 
     <div class="hamburger" py-click="sidebar_toggle()">
       <span></span>
@@ -27,24 +20,7 @@
     </div>
     <nav class="sidebar sidebar-inactive">
       <div class="menu">
-        <li>
-          <div class="add-word-container">
-            <label for="add-word">Add word:</label>
-            <input
-              class="add-word-input"
-              type="text"
-              name="add-word"
-              value=""
-            />
-            <button py-click="submit_word()">Add</button>
-          </div>
-        </li>
-        <li>
-          <div class="highlight-input-container">
-            <label for="highlight-input">Highlight words:</label>
-            <input type="checkbox" class="highlight-input" name="highlight-input" py-click="highlight_words_toggle()">
-          </div>
-        </li>
+        <li><a href="./create-puzzle.html">Create Word Search puzzle</a></li>
         <li><a href="#">About</a></li>
       </div>
     </nav>
@@ -52,9 +28,14 @@
     <div class="shadow" py-click="shadow_sidebar_toggle()"></div>
 
     <main>
-      <div class="game-container">  
-        <div class="written-words"></div>
-        <div class="game-board"></div>
+      <h1>Word Search</h1>
+      <div class="home-menu">
+        <div class="home-menu-item">
+          <a href="./create-puzzle.html">Create new Word Search puzzle</a>
+        </div>
+        <div class="home-menu-item">
+          <a href="#">About</a>
+        </div>
       </div>
     </main>
   </body>

@@ -1,0 +1,43 @@
+main h1 {
+  font-size: 5rem;
+}
+
+.home-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-menu-item {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 30px;
+  border: 3px black solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  padding: 0;
+}
+
+.home-menu-item:hover {
+  background-color: gray;
+}
+
+.home-menu-item a,
+.home-menu-item a:link,
+.home-menu-item a:visited,
+.home-menu-item a:hover,
+.home-menu-item a:active {
+  margin: 0;
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  color: black;
+  text-align: center;
+}
