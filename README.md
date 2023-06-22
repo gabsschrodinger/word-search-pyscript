@@ -4,10 +4,8 @@ Website that can be used to create, play, and print Word Search puzzles. You can
 
 ## Tech Stack
 
-This is a website made with:
-
 - PyScript (python)
-- HTML and CSS
+- HTML/CSS
 
 ## How to run
 
