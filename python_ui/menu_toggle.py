@@ -25,7 +25,7 @@ def sidebar_toggle():
         hamburger_container.children[2].classList.add("last-bar")
 
 
-def shadow_sidebar_toggle():
+def shadow_toggle():
     if document.querySelector(".shadow-on") != None:
         sidebar_toggle()
 

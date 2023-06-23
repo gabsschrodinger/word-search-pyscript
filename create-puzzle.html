@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/editor.css" />
     <link rel="stylesheet" href="css/menu.css" />
+    <link rel="stylesheet" href="css/message-modal.css" />
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
@@ -50,7 +51,12 @@
       </div>
     </nav>
 
-    <div class="shadow" py-click="shadow_sidebar_toggle()"></div>
+    <div class="shadow" py-click="shadow_toggle()"></div>
+
+    <div class="message-modal">
+      <span class="message-modal-title">Oops!</span>
+      <p class="message-modal-content"></p>
+    </div>
 
     <main>
       <div class="game-container">  

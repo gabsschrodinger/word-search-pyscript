@@ -71,6 +71,39 @@ def display_tracked_words() -> None:
         written_words_div.appendChild(new_word)
 
 
+def disable_message_modal() -> None:
+    modal = document.querySelector(".message-modal")
+    modal.classList.remove("message-modal-active")
+
+
+def add_closing_button_modal(message: str, type: str) -> None:
+    button = document.createElement("div")
+    button.classList.add("message-modal-button")
+    button_content = document.createTextNode(message)
+    button.appendChild(button_content)
+
+    add_event_listener(button, "click", lambda _: disable_message_modal())
+
+    if type == "ERROR":
+        button.classList.add("message-modal-error-button")
+
+    modal = document.querySelector(".message-modal")
+    modal.appendChild(button)
+
+
+def activate_message_modal(message_title: str, message: str) -> None:
+    message_title_element = document.querySelector(".message-modal-title")
+    message_title_content = document.createTextNode(message_title)
+    message_title_element.appendChild(message_title_content)
+
+    message_element = document.querySelector(".message-modal-content")
+    message_content = document.createTextNode(message)
+    message_element.appendChild(message_content)
+
+    modal = document.querySelector(".message-modal")
+    modal.classList.add("message-modal-active")
+
+
 def submit_word():
     add_word_input = document.querySelector(".add-word-input")
     word_to_add = add_word_input.value
@@ -78,7 +111,11 @@ def submit_word():
     if word_to_add == None or word_to_add == "":
         return
 
-    write_with_retry(word_to_add.upper())
+    try:
+        write_with_retry(word_to_add.upper())
+    except Exception as exception:
+        add_closing_button_modal("Dismiss", "ERROR")
+        activate_message_modal("Oops!", str(exception))
 
     add_word_input.value = ""
 
