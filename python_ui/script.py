@@ -73,6 +73,7 @@ def display_tracked_words() -> None:
 
 def disable_message_modal() -> None:
     modal = document.querySelector(".message-modal")
+    modal.replaceChildren()
     modal.classList.remove("message-modal-active")
 
 
@@ -92,15 +93,20 @@ def add_closing_button_modal(message: str, type: str) -> None:
 
 
 def activate_message_modal(message_title: str, message: str) -> None:
-    message_title_element = document.querySelector(".message-modal-title")
+    modal = document.querySelector(".message-modal")
+    
+    message_title_element = document.createElement("span")
+    message_title_element.setAttribute("class", "message-modal-title")
     message_title_content = document.createTextNode(message_title)
     message_title_element.appendChild(message_title_content)
+    modal.appendChild(message_title_element)
 
-    message_element = document.querySelector(".message-modal-content")
+    message_element = document.createElement("p")
+    message_element.setAttribute("class", ".message-modal-content")
     message_content = document.createTextNode(message)
     message_element.appendChild(message_content)
+    modal.appendChild(message_element)
 
-    modal = document.querySelector(".message-modal")
     modal.classList.add("message-modal-active")
 
 
@@ -114,8 +120,8 @@ def submit_word():
     try:
         write_with_retry(word_to_add.upper())
     except Exception as exception:
-        add_closing_button_modal("Dismiss", "ERROR")
         activate_message_modal("Oops!", str(exception))
+        add_closing_button_modal("Dismiss", "ERROR")
 
     add_word_input.value = ""
 
