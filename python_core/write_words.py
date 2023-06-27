@@ -75,6 +75,9 @@ def randomly_write_word(word: str, mode: str) -> None:
 
 
 def write_with_retry(word: str, mode: str = "ADD") -> None:
+    if len(word) > len(letter_grid) and len(word) > len(letter_grid[0]):
+        raise Exception("It's not possible to add a word longer than the board length/height.")
+
     attempts = 0
 
     while attempts < 1000:
@@ -85,7 +88,7 @@ def write_with_retry(word: str, mode: str = "ADD") -> None:
         except:
             attempts += 1
 
-    raise Exception("Too many attempts. Cannot add word :(")
+    raise Exception("Too many attempts. Try increasing the size of the board or removing word before adding more words.")
 
 
 def rewrite_word(word: str) -> None:

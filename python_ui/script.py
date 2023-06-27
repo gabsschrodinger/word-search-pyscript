@@ -118,7 +118,7 @@ def submit_word():
         return
 
     try:
-        write_with_retry(word_to_add.upper())
+        write_with_retry(word_to_add.strip().upper())
     except Exception as exception:
         activate_message_modal("Oops!", str(exception))
         add_closing_button_modal("Dismiss", "ERROR")
