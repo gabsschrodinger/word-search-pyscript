@@ -1,6 +1,6 @@
 import unittest
 import random
-from python_core.letter_grid import generate_random_letter_grid
+from letter_grid import generate_random_letter_grid
 
 class TestHorizontalWords(unittest.TestCase):
 
