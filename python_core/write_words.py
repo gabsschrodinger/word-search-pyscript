@@ -78,7 +78,7 @@ def write_with_retry(word: str, mode: str = "ADD") -> None:
     if len(word) > len(letter_grid) and len(word) > len(letter_grid[0]):
         raise Exception("It's not possible to add a word longer than the board length/height.")
     
-    if word in map(lambda x: x["word"], written_words):
+    if word in map(lambda x: x["word"], written_words) and mode == "ADD":
         raise Exception("This word was already added.")
 
     attempts = 0
