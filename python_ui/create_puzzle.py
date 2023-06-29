@@ -1,8 +1,9 @@
-from js import document
+from js import document, window
 from pyodide.ffi.wrappers import add_event_listener
 from python_core.tracked_words import written_words, remove_word
 from python_core.letter_grid import letter_grid
 from python_core.write_words import write_with_retry, rewrite_word
+from python_core.encode_utils import encode_data
 
 
 def rerender_board():
@@ -94,7 +95,7 @@ def add_closing_button_modal(message: str, type: str) -> None:
 
 def activate_message_modal(message_title: str, message: str) -> None:
     modal = document.querySelector(".message-modal")
-    
+
     message_title_element = document.createElement("span")
     message_title_element.setAttribute("class", "message-modal-title")
     message_title_content = document.createTextNode(message_title)
@@ -145,6 +146,17 @@ def highlight_words_toggle():
 
 rerender_board()
 
-add_word_input = document.querySelector(".add-word-input")
-add_event_listener(add_word_input, "keydown",
+add_event_listener(document.querySelector(".add-word-input"), "keydown",
                    lambda e: submit_word() if e.code == "Enter" else None)
+
+
+# def play_puzzle():
+#     window.location.href = "/play.html?width=15&height=15&words=" + \
+#         encode_data(written_words) + "&letter_grid=" + encode_data(letter_grid)
+
+def play_puzzle():
+    game = {
+        "words": written_words,
+        "letter_grid": letter_grid
+    }
+    window.location.href = "/play.html?game=" + encode_data(game)

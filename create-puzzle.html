@@ -11,15 +11,17 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
+      packages = ["lzstring"]
+      
       [[fetch]]
       from = './python_core'
-      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py']
+      files = ['letter_grid.py', 'write_words.py', 'tracked_words.py', 'encode_utils.py']
       to_folder = 'python_core'
     </py-config>
   </head>
   <body>
     <py-script src="python_ui/menu_toggle.py"></py-script>
-    <py-script src="python_ui/script.py"></py-script>
+    <py-script src="python_ui/create_puzzle.py"></py-script>
 
     <div class="hamburger" py-click="sidebar_toggle()">
       <span></span>
@@ -46,6 +48,7 @@
             <input type="checkbox" class="highlight-input" name="highlight-input" py-click="highlight_words_toggle()">
           </div>
         </li>
+        <li class="play-puzzle-btn" py-click="play_puzzle()">Play the puzzle</li>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
       </div>

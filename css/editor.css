@@ -67,3 +67,7 @@
 .letter-cell-highlighted {
   background-color: gray;
 }
+
+.play-puzzle-btn {
+  cursor: pointer;
+}
