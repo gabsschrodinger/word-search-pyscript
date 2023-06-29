@@ -23,5 +23,28 @@
   <body>
     <py-script src="python_ui/menu_toggle.py"></py-script>
     <py-script src="python_ui/play_puzzle.py"></py-script>
+
+    <div class="hamburger" py-click="sidebar_toggle()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="sidebar sidebar-inactive">
+      <div class="menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+      </div>
+    </nav>
+
+    <div class="shadow" py-click="shadow_toggle()"></div>
+
+    <div class="message-modal"></div>
+
+    <main>
+      <div class="game-container">  
+        <div class="written-words"></div>
+        <div class="game-board"></div>
+      </div>
+    </main>
   </body>
 </html>
