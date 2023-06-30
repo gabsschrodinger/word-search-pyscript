@@ -1,0 +1,14 @@
+.game-letter-div {
+  transition: 0.3s;
+  border-width: 2px;
+  cursor: pointer;
+}
+
+.game-letter-div:hover {
+  background-color: gray;
+}
+
+.game-letter-div-selected {
+  background-color: gray;
+  border-color: red;
+}

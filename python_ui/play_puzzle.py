@@ -1,4 +1,5 @@
 from js import window, document
+from pyodide.ffi.wrappers import add_event_listener
 from typing import TypedDict, List
 from python_core.letter_grid import LetterCell
 from python_core.tracked_words import WrittenWord
@@ -34,7 +35,17 @@ def render_board():
                                      str(j["coordinate"][0]) + "-" + str(j["coordinate"][1]))
             letter_div_content = document.createTextNode(j["value"])
             letter_div.appendChild(letter_div_content)
+
+            def toggle_letter_cell(e):
+                target_cell = e.target
+                if target_cell.classList.contains("game-letter-div-selected"):
+                    target_cell.classList.remove("game-letter-div-selected")
+                else:
+                    target_cell.classList.add("game-letter-div-selected")
+
+            add_event_listener(letter_div, "click", toggle_letter_cell)
             current_row.appendChild(letter_div)
+
         game_board.appendChild(current_row)
 
 render_board()
