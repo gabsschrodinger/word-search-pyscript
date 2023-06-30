@@ -42,22 +42,25 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  gap: 2px;
   align-items: center;
   justify-content: center;
 }
 
 .letter-grid-row {
   display: flex;
+  gap: 2px;
 }
 
 .game-letter-div {
   background-color: black;
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   align-items: center;
   justify-content: center;
   color: white;
   border: 1px white solid;
+  border-radius: 3px;
   width: 5.5vh;
   height: 5.5vh;
   user-select: none;
